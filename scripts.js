@@ -772,69 +772,7 @@ function loadCompletedTasks() {
 
 window.onload = generateDayTasks;
 
-
-//-------------------------------------------
-function generateDayTasks() {
-    const dayContainer = document.getElementById('day-container');
-    dayContainer.innerHTML = ''; // Clear previous tasks
-
-    // Find the current day based on the index
-    let dayData = getDayData(currentDayIndex);
-
-    if (dayData) {
-        const dayTitle = document.createElement('h2');
-        dayTitle.textContent = `Day ${dayData.day}`;
-        dayContainer.appendChild(dayTitle);
-
-        const taskList = document.createElement('ul');
-        taskList.className = 'day-tasks';
-
-        dayData.tasks.forEach((task, index) => {
-            const taskItem = document.createElement('li');
-            taskItem.textContent = task;
-            if (completedTasks.includes(`${currentDayIndex}-${index}`)) {
-                taskItem.classList.add('completed');
-            }
-            taskItem.onclick = () => toggleComplete(taskItem, index);
-            taskList.appendChild(taskItem);
-        });
-
-        dayContainer.appendChild(taskList);
-    }
-
-    checkAllTasksCompleted();  // Check if all tasks are completed
-    saveProgress();  // Save progress whenever tasks are generated
-}
-
-function toggleComplete(taskItem, taskIndex) {
-    taskItem.classList.toggle('completed');
-    const taskKey = `${currentDayIndex}-${taskIndex}`;
-
-    if (taskItem.classList.contains('completed')) {
-        completedTasks.push(taskKey);
-    } else {
-        completedTasks = completedTasks.filter(task => task !== taskKey);
-    }
-
-    saveProgress();  // Save progress whenever a task is toggled
-
-    checkAllTasksCompleted();  // Check if all tasks are completed after toggling
-
-    if (areAllTasksCompleted()) {
-        moveToNextDay();
-    }
-}
-
-function checkAllTasksCompleted() {
-    const container = document.querySelector('.container');
-    if (areAllTasksCompleted()) {
-        container.classList.add('all-completed');
-    } else {
-        container.classList.remove('all-completed');
-    }
-}
-
-// ... [dark them]
+// DEveloper Click
 document.addEventListener('DOMContentLoaded', () => {
     // Check for saved theme in localStorage
     const savedTheme = localStorage.getItem('theme');
@@ -846,22 +784,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Developer icon click event
-    /*const devIcon = document.querySelector('.dev-icon');
+    const devIcon = document.querySelector('.dev-icon');
+    const modal = document.getElementById('modal');
+    const span = document.querySelector('.close');
+
     devIcon.addEventListener('click', () => {
-        alert('Hello 👋, My Name is Balakram Tudu. Visit my profile at: https://balakram.github.io/balakramtudu/index.html');
-    });*/
+        modal.style.display = 'block';
+    });
+
+    span.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
 });
 
-// DEveloper Click
 document.addEventListener('DOMContentLoaded', () => {
     // Check for saved theme in localStorage
     const savedTheme = localStorage.getItem('theme');
+    const themeToggle = document.getElementById('theme-toggle');
+
     if (savedTheme) {
         document.body.classList.toggle('dark-theme', savedTheme === 'dark');
+        themeToggle.checked = savedTheme === 'dark';
     } else {
         // Default theme is dark
         localStorage.setItem('theme', 'dark');
+        themeToggle.checked = true;
     }
+
+    // Theme toggle switch event
+    themeToggle.addEventListener('change', () => {
+        const isDark = themeToggle.checked;
+        document.body.classList.toggle('dark-theme', isDark);
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
 
     // Developer icon click event
     const devIcon = document.querySelector('.dev-icon');
