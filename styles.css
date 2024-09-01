@@ -1,12 +1,22 @@
-/* styles.css */
-
 /* Reset some basic styles */
 body, html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transition for smooth theme switching */
+}
+
+/* Light theme styles (default) */
+body {
     background-color: #f0f4f8;
+    color: #333;
+}
+
+/* Dark theme styles */
+body.dark-theme {
+    background-color: #121212;
+    color: #ffffff;
 }
 
 /* Main container styling */
@@ -17,14 +27,71 @@ body, html {
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease; /* Transition for color change */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transition for color and background change */
 }
 
+body.dark-theme .container {
+    background-color: #1e1e1e; /* Dark theme background */
+}
+
+/*===================*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #000000;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #ffffff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
 /* Header styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #72ffd9ec;
+}
+
+body.dark-theme .header {
+    background-color: #1e1e1e; /* Dark theme header */
+}
+
 h1 {
     text-align: center;
-    color: #333;
+    margin: 0;
+    color: inherit; /* Uses color based on current theme */
     margin-bottom: 20px;
+}
+
+/* Developer icon styles */
+.dev-icon {
+    font-size: 24px;
+    cursor: pointer;
 }
 
 /* Daily tasks container */
@@ -48,10 +115,17 @@ h1 {
     transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
 }
 
-/* Task item hover effect */
+body.dark-theme .day-tasks li {
+    background-color: #282828; /* Dark theme task background */
+}
+
 .day-tasks li:hover {
     background-color: #d1e7f4;
     transform: translateY(-2px);
+}
+
+body.dark-theme .day-tasks li:hover {
+    background-color: #3a3a3a; /* Dark theme hover effect */
 }
 
 /* Completed task styling */
@@ -59,6 +133,11 @@ h1 {
     background-color: #d4edda;
     text-decoration: line-through;
     color: #155724;
+}
+
+body.dark-theme .day-tasks li.completed {
+    background-color: #3a3a3a;
+    color: #9be29b; /* Adjusted for better readability in dark mode */
 }
 
 /* Navigation buttons */
@@ -79,11 +158,75 @@ h1 {
     transition: background-color 0.3s ease;
 }
 
+body.dark-theme .navigation button {
+    background-color: #1e90ff;
+}
+
 .navigation button:hover {
     background-color: #0056b3;
+}
+
+body.dark-theme .navigation button:hover {
+    background-color: #187bcd;
 }
 
 /* Style when all tasks are completed */
 .container.all-completed {
     background-color: #d4edda; /* Green background when all tasks are done */
+}
+
+body.dark-theme .container.all-completed {
+    background-color: #3a3a3a; /* Dark theme all completed */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dev-icon {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    .navigation {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navigation button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .day-tasks li {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 400px) {
+    .container {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .day-tasks li {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+
+    .navigation button {
+        font-size: 14px;
+    }
 }
