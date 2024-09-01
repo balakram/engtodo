@@ -1,5 +1,3 @@
-// scripts.js
-
 // Plan for 60 days
 const plan = [
     {
@@ -836,4 +834,51 @@ function checkAllTasksCompleted() {
     }
 }
 
-// ... [Rest of the JavaScript code remains unchanged]
+// ... [dark them]
+document.addEventListener('DOMContentLoaded', () => {
+    // Check for saved theme in localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.body.classList.toggle('dark-theme', savedTheme === 'dark');
+    } else {
+        // Default theme is dark
+        localStorage.setItem('theme', 'dark');
+    }
+
+    // Developer icon click event
+    /*const devIcon = document.querySelector('.dev-icon');
+    devIcon.addEventListener('click', () => {
+        alert('Hello 👋, My Name is Balakram Tudu. Visit my profile at: https://balakram.github.io/balakramtudu/index.html');
+    });*/
+});
+
+// DEveloper Click
+document.addEventListener('DOMContentLoaded', () => {
+    // Check for saved theme in localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.body.classList.toggle('dark-theme', savedTheme === 'dark');
+    } else {
+        // Default theme is dark
+        localStorage.setItem('theme', 'dark');
+    }
+
+    // Developer icon click event
+    const devIcon = document.querySelector('.dev-icon');
+    const modal = document.getElementById('modal');
+    const span = document.querySelector('.close');
+
+    devIcon.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
+
+    span.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+});
