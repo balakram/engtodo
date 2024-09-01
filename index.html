@@ -3,14 +3,28 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practice To-Do List</title>
+    <title>Todo App</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<bodyclass="dark-theme"> <!-- Add the dark-theme class to the body -->
+    <div class="header">
+        <h1>Todo App</h1>
+        <!-- Developer Icon -->
+        <span class="dev-icon">👨‍💻</span>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Hello 👋, My Name is Balakram Tudu.</p>
+            <p>Visit my profile at: <a href="https://balakram.github.io/balakramtudu/index.html" target="_blank">Profile
+                    Link</a></p>
+        </div>
+    </div>
     <div class="container">
-        <h1>Practice To-Do List</h1>
+        <!--<h1>Practice To-Do List</h1>-->
         <div id="day-container">
             <!-- Daily tasks will be dynamically generated here -->
         </div>
@@ -20,6 +34,6 @@
         </div>
     </div>
     <script src="scripts.js"></script>
-</body>
+    </body>
 
 </html>
