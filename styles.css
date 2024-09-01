@@ -1,25 +1,25 @@
-/* Reset some basic styles */
+/* Basic Reset */
 body, html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transition for smooth theme switching */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme switching */
 }
 
-/* Light theme styles (default) */
+/* Light Theme (Default) */
 body {
     background-color: #f0f4f8;
     color: #333;
 }
 
-/* Dark theme styles */
+/* Dark Theme */
 body.dark-theme {
     background-color: #121212;
     color: #ffffff;
 }
 
-/* Main container styling */
+/* Container Styling */
 .container {
     max-width: 600px;
     margin: 50px auto;
@@ -27,85 +27,53 @@ body.dark-theme {
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transition for color and background change */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.dark-theme .container {
-    background-color: #1e1e1e; /* Dark theme background */
+    background-color: #1e1e1e; /* Dark theme container background */
 }
 
-/*===================*/
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
-    background-color: #000000;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-.close {
-    color: #ffffff;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-/* Header styling */
+/* Header Styling */
+/* Header Styling */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
     background-color: #72ffd9ec;
+    transition: background-color 0.3s ease;
 }
 
 body.dark-theme .header {
-    background-color: #1e1e1e; /* Dark theme header */
+    background-color: #092f75; /* Dark theme header background */
 }
 
 h1 {
     text-align: center;
     margin: 0;
-    color: inherit; /* Uses color based on current theme */
+    color: inherit; /* Use theme color */
     margin-bottom: 20px;
 }
 
-/* Developer icon styles */
+/* Developer Icon Styling */
 .dev-icon {
     font-size: 24px;
     cursor: pointer;
 }
 
-/* Daily tasks container */
+/* Daily Tasks Container */
 #day-container {
     margin-bottom: 20px;
 }
 
-/* Task list styling */
+/* Task List Styling */
 .day-tasks {
     list-style: none;
     padding: 0;
 }
 
-/* Individual task item styling */
+/* Individual Task Item */
 .day-tasks li {
     background-color: #e8f1f8;
     padding: 10px 15px;
@@ -128,7 +96,7 @@ body.dark-theme .day-tasks li:hover {
     background-color: #3a3a3a; /* Dark theme hover effect */
 }
 
-/* Completed task styling */
+/* Completed Task Styling */
 .day-tasks li.completed {
     background-color: #d4edda;
     text-decoration: line-through;
@@ -137,10 +105,10 @@ body.dark-theme .day-tasks li:hover {
 
 body.dark-theme .day-tasks li.completed {
     background-color: #3a3a3a;
-    color: #9be29b; /* Adjusted for better readability in dark mode */
+    color: #9be29b; /* Dark theme completed task color  #9be29b;*/
 }
 
-/* Navigation buttons */
+/* Navigation Buttons */
 .navigation {
     display: flex;
     justify-content: space-between;
@@ -159,7 +127,7 @@ body.dark-theme .day-tasks li.completed {
 }
 
 body.dark-theme .navigation button {
-    background-color: #1e90ff;
+    background-color: #1e90ff; /* Dark theme button background */
 }
 
 .navigation button:hover {
@@ -167,16 +135,106 @@ body.dark-theme .navigation button {
 }
 
 body.dark-theme .navigation button:hover {
-    background-color: #187bcd;
+    background-color: #187bcd; /* Dark theme button hover */
 }
 
-/* Style when all tasks are completed */
+/* Style When All Tasks Are Completed */
 .container.all-completed {
-    background-color: #d4edda; /* Green background when all tasks are done */
+    background-color: #d4edda; /* Green background when all tasks are completed */
 }
 
 body.dark-theme .container.all-completed {
     background-color: #3a3a3a; /* Dark theme all completed */
+}
+
+/* Theme Switcher */
+.theme-switch {
+    width: 55px;
+    height: 28px; /* Slightly increased height for better aesthetics */
+    position: relative;
+    display: inline-block;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, #ccc, #ddd); /* Gradient background for a more dynamic look */
+    border-radius: 34px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    cursor: pointer;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease; /* Smooth transitions */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 24px; /* Slightly smaller than the slider height */
+    width: 24px;
+    left: 2px; /* Adjusted to fit the new size */
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add shadow for the knob */
+    transition: transform 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+input:checked + .slider {
+    background: linear-gradient(45deg, #21d4fd, #2196F3); /* Dynamic gradient for the active state */
+    box-shadow: 0 0 15px rgba(33, 150, 243, 0.5); /* Enhanced shadow when active */
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+    background-color: #fff; /* Keep the knob white for contrast */
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.5); /* Shadow that matches the active state */
+}
+
+/* Responsive Adjustments */
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+body.dark-theme .modal-content {
+    background-color: #000000; /* Dark theme modal background */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 /* Responsive Design */
@@ -186,14 +244,8 @@ body.dark-theme .container.all-completed {
         padding: 15px;
     }
 
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .dev-icon {
-        font-size: 20px;
-        margin-top: 10px;
+    .modal-content {
+        margin-top: 50%;
     }
 
     .navigation {
@@ -207,7 +259,7 @@ body.dark-theme .container.all-completed {
     }
 
     .day-tasks li {
-        font-size: 14px;
+        font-size: 18px;
     }
 }
 
@@ -222,7 +274,7 @@ body.dark-theme .container.all-completed {
     }
 
     .day-tasks li {
-        font-size: 12px;
+        font-size: 18px;
         padding: 8px 10px;
     }
 
