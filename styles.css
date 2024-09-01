@@ -1,0 +1,89 @@
+/* styles.css */
+
+/* Reset some basic styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+}
+
+/* Main container styling */
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease; /* Transition for color change */
+}
+
+/* Header styling */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Daily tasks container */
+#day-container {
+    margin-bottom: 20px;
+}
+
+/* Task list styling */
+.day-tasks {
+    list-style: none;
+    padding: 0;
+}
+
+/* Individual task item styling */
+.day-tasks li {
+    background-color: #e8f1f8;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+}
+
+/* Task item hover effect */
+.day-tasks li:hover {
+    background-color: #d1e7f4;
+    transform: translateY(-2px);
+}
+
+/* Completed task styling */
+.day-tasks li.completed {
+    background-color: #d4edda;
+    text-decoration: line-through;
+    color: #155724;
+}
+
+/* Navigation buttons */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.navigation button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.navigation button:hover {
+    background-color: #0056b3;
+}
+
+/* Style when all tasks are completed */
+.container.all-completed {
+    background-color: #d4edda; /* Green background when all tasks are done */
+}
